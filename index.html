@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My AI Assistant</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#eef2f7}
+header{background:#075e54;color:white;padding:18px;font-size:22px;font-weight:bold}
+.status{font-size:12px;font-weight:normal;margin-top:5px}
+#chat{height:calc(100vh - 140px);overflow-y:auto;padding:15px}
+.msg{padding:12px 15px;margin:10px 0;border-radius:15px;max-width:85%;line-height:1.5}
+.user{background:#dcf8c6;margin-left:auto}
+.bot{background:white;margin-right:auto}
+footer{position:fixed;bottom:0;width:100%;display:flex;padding:10px;background:white;gap:8px}
+input{flex:1;padding:14px;border:1px solid #ccc;border-radius:25px;font-size:16px;min-width:0}
+button{background:#075e54;color:white;border:0;padding:12px 18px;border-radius:25px;font-size:16px}
+</style>
+</head>
+<body>
+
+<header>
+🤖 My AI Assistant
+<div class="status">● Your personal AI chat</div>
+</header>
+
+<div id="chat">
+<div class="msg bot">
+नमस्ते! 👋<br>
+मैं आपका AI Assistant हूँ।<br>
+बताइए, मैं आपकी क्या मदद कर सकता हूँ?
+</div>
+</div>
+
+<footer>
+<input id="message" placeholder="Message लिखें...">
+<button onclick="send()">Send</button>
+</footer>
+
+<script>
+function send(){
+let input=document.getElementById("message");
+let text=input.value.trim();
+if(!text)return;
+
+let chat=document.getElementById("chat");
+
+let user=document.createElement("div");
+user.className="msg user";
+user.innerText=text;
+chat.appendChild(user);
+
+input.value="";
+
+let bot=document.createElement("div");
+bot.className="msg bot";
+bot.innerText="आपका मैसेज मिल गया! वास्तविक AI जवाब देने के लिए अगले चरण में AI कनेक्शन जोड़ेंगे।";
+chat.appendChild(bot);
+
+chat.scrollTop=chat.scrollHeight;
+}
+</script>
+
+</body>
+</html>
